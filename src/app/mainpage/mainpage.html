@@ -28,6 +28,8 @@
                 <th>Contact</th>
                 <th></th>
                 <th></th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -36,12 +38,16 @@
                 <td>{{cus.CustomerNo}}</td>
                 <td>{{cus.Name}}</td>
                 <td>{{cus.Contact}}</td>
+                <td><button (click)="selectCustomer(cus)"class="add-btn">Edit</button></td>
                 <td><button (click)="openEditModal(cus)" class="add-btn">Edit</button></td>
-                <td><button (click)="openEditModal(cus)" class="add-btn">View</button></td>
+                
+                <td><button [routerLink]="['/details2']" [state]="{customer:cus}" class="add-btn">View2</button></td>
             </tr>
         </tbody>
     </table>
     <button *ngIf="hasSelectedCustomers()" (click)="deleteSelected()" class="delete-btn">Delete Selected</button>
+    <app-details [customer]="currentCustomer"></app-details>
+
 
     <!-- Modal -->
     <div *ngIf="isModalOpen" class="modal">
